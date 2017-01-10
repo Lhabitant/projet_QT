@@ -1,8 +1,10 @@
 HEADERS += \
-    main.h
+    main.h \
+    zonetrame.h
 
 SOURCES += \
-    main.cpp
+    main.cpp \
+    zonetrame.cpp
 QT += widgets
 
 TEMPLATE = app
