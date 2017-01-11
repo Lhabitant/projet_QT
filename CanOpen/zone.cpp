@@ -1,6 +1,7 @@
 #include "zone.h"
 #include <QVBoxLayout>
-Zone::Zone(QWidget &zone1,QWidget &zone2,QWidget &zone3)
+#include "zonebas.h"
+Zone::Zone(QWidget *&zone1,QWidget *&zone2,zoneBas *&zone3)
 {
     createMenu();
     createHorizontalGroupBox(zone1,zone2);
@@ -12,7 +13,8 @@ Zone::Zone(QWidget &zone1,QWidget &zone2,QWidget &zone3)
     mainLayout.addWidget(horizontalGroupBox);
     mainLayout.addWidget(zone3);
 
-    setLayout(mainLayout);
+
+    //this->setLayout(mainLayout);
 }
 void Zone::createMenu()
 {
@@ -23,12 +25,12 @@ void Zone::createMenu()
 
     connect(exitAction,SIGNAL(triggered()),this,SLOT(accept()));
 }
-void Zone::createHorizontalGroupBox(QWidget zoneGauche,QWidget zoneDroite)
+void Zone::createHorizontalGroupBox(QWidget*& zoneGauche,QWidget*& zoneDroite)
 {
     horizontalGroupBox = new QGroupBox(tr("Affichage supérieur"));
     QHBoxLayout layout;
-    layout.addWidget(&zoneGauche);
-    layout.addWidget(&zoneDroite);
+    layout.addWidget(zoneGauche);
+    layout.addWidget(zoneDroite);
 
     horizontalGroupBox->setLayout(&layout);
 }

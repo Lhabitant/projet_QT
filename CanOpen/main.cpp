@@ -10,10 +10,11 @@
 #include <QDialog>
 #include "zone.h"
 #include "zonetrame.h"
+#include "zonebas.h"
 int main(int argc, char *argv[])
 {
     QApplication app(argc,argv);
- /* QWidget mainWindow;
+    /*QWidget mainWindow;
     mainWindow.resize(mainWindow.maximumWidth(),mainWindow.maximumHeight());
 
     ZoneTrame tradWindow(&mainWindow);
@@ -48,24 +49,28 @@ int main(int argc, char *argv[])
     QPushButton quit("Quitter",&mainWindow);
     quit.move(870,850);
 
-    QObject::connect(&quit,SIGNAL(clicked()),qApp,SLOT(quit()));
-    mainWindow.show();
-    */
-    QWidget *zbra = new QWidget;
+    QObject::connect(&quit,SIGNAL(clicked()),qApp,SLOT(quit()));*/
+
+
+    QWidget mainWindow;
+    mainWindow.resize(mainWindow.maximumWidth(),mainWindow.maximumHeight());
+
+    QWidget *zbra = new ZoneTrame(&mainWindow);
     zbra->resize(500,400);
     zbra->setStyleSheet("border: 1px solid black;");
 
-    QWidget *zbwi = new QWidget;
+    QWidget *zbwi = new ZoneTrame(&mainWindow);
     zbwi->resize(500,400);
     zbwi->setStyleSheet("border: 1px solid red");
 
-    QWidget *bas = new QWidget;
+
+    zoneBas *bas = new zoneBas(&mainWindow);
     bas->resize(1000,500);
     bas->setStyleSheet("background-color: red;");
 
-    Zone first(new QWidget,new QWidget,new QWidget);
 
+    Zone first(zbra,zbwi,bas);
 
-
+    mainWindow.show();
     return app.exec();
 }
