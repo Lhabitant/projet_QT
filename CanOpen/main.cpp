@@ -8,6 +8,7 @@
 #include <QScrollArea>
 #include <QVBoxLayout>
 #include <QDialog>
+#include <QTextEdit>
 #include "zone.h"
 #include "zonetrame.h"
 #include "zonebas.h"
@@ -36,15 +37,11 @@ int main(int argc, char *argv[])
     layoutSuperieur.addWidget(&tradWindow);
     layoutSuperieur.addWidget(&brutWindow);
 
-
-
-
     QVBoxLayout lay;
     lay.addLayout(&layoutSuperieur);
     mainWindow.setLayout(&lay);
     ZoneTrame hehe(&mainWindow);
     lay.addWidget(&hehe);
-
 
     QPushButton quit("Quitter",&mainWindow);
     quit.move(870,850);
@@ -55,25 +52,28 @@ int main(int argc, char *argv[])
     QWidget mainWindow;
     mainWindow.resize(mainWindow.maximumWidth(),mainWindow.maximumHeight());
 
-    QWidget *zbra = new ZoneTrame(&mainWindow);
-    zbra->resize(500,400);
+    QTextEdit *a = new QTextEdit;
+    a->setReadOnly(true);
+    a->setPlainText("trolololol");
+    QWidget *zbra = a;
     zbra->setStyleSheet("border: 1px solid black;");
 
-    QWidget *zbwi = new ZoneTrame(&mainWindow);
-    zbwi->resize(500,400);
+    QTextEdit *b = new QTextEdit;
+    b->setReadOnly(true);
+    b->setPlainText("trelelelel");
+    QWidget *zbwi = b;
     zbwi->setStyleSheet("border: 1px solid red;");
 
 
     zoneBas *bas = new zoneBas(&mainWindow);
     bas->setStyleSheet("background-color: red;");
-    bas->move(0,500);
 
     Zone first(zbra,zbwi,bas,&mainWindow);
 
-    QPushButton quit("Quitter",&mainWindow);
+   /* QPushButton quit("Quitter",&mainWindow);
     quit.move(870,850);
 
-    QObject::connect(&quit,SIGNAL(clicked()),qApp,SLOT(quit()));
+    QObject::connect(&quit,SIGNAL(clicked()),qApp,SLOT(quit()));*/
 
     mainWindow.show();
     return app.exec();

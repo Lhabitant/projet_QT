@@ -8,12 +8,12 @@
 
 zoneBas::zoneBas(QWidget *parent) : QWidget(parent)
 {
-    QBoxLayout *layoutBas= new QBoxLayout(QBoxLayout::LeftToRight,&*parent);
+    QBoxLayout *layoutBas= new QBoxLayout(QBoxLayout::LeftToRight,this);
     QTabWidget *o = new QTabWidget(this);
     QTabWidget &onglets = *o;
     createOnglets(onglets);
     layoutBas->addWidget(&onglets);
-    parent->setLayout(layoutBas);
+    this->setLayout(layoutBas);
 }
 
 void zoneBas::createOnglets(QTabWidget& onglets){
