@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 
     QWidget *zbwi = new ZoneTrame(&mainWindow);
     zbwi->resize(500,400);
-    zbwi->setStyleSheet("border: 1px solid red");
+    zbwi->setStyleSheet("border: 1px solid red;");
 
 
     zoneBas *bas = new zoneBas(&mainWindow);

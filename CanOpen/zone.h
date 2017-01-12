@@ -13,7 +13,7 @@
 class Zone : public QDialog
 {
 public:
-    Zone(QWidget*& zone1,QWidget*& zone2,zoneBas*& zone3);
+    Zone(QWidget*& zone1,QWidget*& zone2,zoneBas*& zone3,QWidget* parent);
 private:
     void createMenu();
     void createHorizontalGroupBox(QWidget*& zone1,QWidget*& zone2);

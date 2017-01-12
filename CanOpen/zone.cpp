@@ -1,7 +1,7 @@
 #include "zone.h"
 #include <QVBoxLayout>
 #include "zonebas.h"
-Zone::Zone(QWidget *&zone1,QWidget *&zone2,zoneBas *&zone3)
+Zone::Zone(QWidget*& zone1,QWidget*& zone2,zoneBas*& zone3,QWidget* parent)
 {
     createMenu();
     createHorizontalGroupBox(zone1,zone2);

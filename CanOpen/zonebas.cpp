@@ -17,12 +17,12 @@ zoneBas::zoneBas(QWidget *parent) : QWidget(parent)
 }
 
 void zoneBas::createOnglets(QTabWidget& onglets){
-    QBoxLayout *filtres = new QBoxLayout(QBoxLayout::LeftToRight,this);
-    QPushButton *filtre1 = new QPushButton("f1");
-    QPushButton *filtre2 = new QPushButton("f2");
-    filtres->addWidget(filtre1);
-    filtres->addWidget(filtre2);
-    this->setLayout(filtres);
+    QWidget *filtres = new QWidget(this);
+    QPushButton *filtre1 = new QPushButton("f1",filtres);
+    QPushButton *filtre2 = new QPushButton("f2",filtres);
+    //filtres->addWidget(filtre1);
+    //filtres->addWidget(filtre2);
+    //this->setLayout(filtres);
     QWidget *console = new QWidget(this);
     onglets.addTab(filtres,"Filtres");
     onglets.addTab(console,"Console");
