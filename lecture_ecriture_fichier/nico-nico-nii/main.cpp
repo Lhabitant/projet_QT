@@ -6,6 +6,25 @@
 #include <QTextCodec>
 #include <QPushButton>
 
+QString readByFlux(QFile *test, int colunmNeeded){
+    QString text,texte;
+    QStringList list;
+    QTextStream flux(test); // on ouvre un flux de lecture sur le fichier (c'est une autre méthode)
+    while (!flux.atEnd()){
+        text=flux.readLine();
+        list=text.split(',');
+        texte+=list.at(colunmNeeded)+'\n';
+        texte.resize(texte.size()-1);
+    }
+    return texte;
+}
+
+QString readByBuffer(QFile test){
+    QString texte;
+    texte = test.readAll(); //on stocke tout dans une string
+    test.close();
+    return texte;
+}
 
 int main(int argc, char *argv[]){
     // UTF-8 Encoding
@@ -13,31 +32,18 @@ int main(int argc, char *argv[]){
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8")); // ces trois lignes servent a afficher en utf8
     QApplication a(argc, argv);
-    QTextEdit zoneTexte; //on crée une zone de texte
-    QTextEdit zoneTexte2;
-    zoneTexte.setGeometry(100,100,400,200); //useless, taille de la zone de texte
-    zoneTexte.setReadOnly(true); //on ne peut pas modifier la zone de texte
-    zoneTexte2.setReadOnly(true);
     QString texte;
-    QString texte2;
-    QStringList list;
-    QFile test("../test1.csv"); //on définit le fichier
-    if(test.open(QIODevice::ReadOnly | QIODevice::csv)) // test sur l'ouverture du fichier
+    QTextEdit zoneTexte; //on crée une zone de texte
+    zoneTexte.setGeometry(300,300,400,300); //useless, taille de la zone de texte
+    zoneTexte.setReadOnly(true); //on ne peut pas modifier la zone de texte
+    QFile test("../test2.csv"); //on définit le fichier
+    if(test.open(QIODevice::ReadOnly | QIODevice::Text)) // test sur l'ouverture du fichier
     {
-         QTextStream flux(&test); // on ouvre un flux de lecture sur le fichier (c'est une autre méthode)
-         texte = test.readAll(); //on stocke tout dans une string
-         while (!flux.atEnd()){
-             list=flux.readLine().split(",");
-             texte2+=list.at(0);//+'\n';
-             texte2.resize(texte.size()-1);
-         }
-         test.close();
+        texte=readByFlux(&test, 2);
     }
     else
-        texte = "Impossible d'ouvrir le fichier !";
+        texte="Impossible d'ouvrir le fichier !";
     zoneTexte.setText(texte); //on affiche le texte lu dans la zone
     zoneTexte.show(); // on affiche la zone de texte
-    zoneTexte2.setText(texte2);
-    zoneTexte2.show();
     return a.exec();
 }
