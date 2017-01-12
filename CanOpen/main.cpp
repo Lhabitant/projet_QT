@@ -65,11 +65,15 @@ int main(int argc, char *argv[])
 
 
     zoneBas *bas = new zoneBas(&mainWindow);
-    bas->resize(1000,500);
     bas->setStyleSheet("background-color: red;");
+    bas->move(0,500);
 
+    Zone first(zbra,zbwi,bas,&mainWindow);
 
-    Zone first(zbra,zbwi,bas);
+    QPushButton quit("Quitter",&mainWindow);
+    quit.move(870,850);
+
+    QObject::connect(&quit,SIGNAL(clicked()),qApp,SLOT(quit()));
 
     mainWindow.show();
     return app.exec();
