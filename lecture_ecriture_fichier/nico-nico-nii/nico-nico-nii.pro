@@ -1,5 +1,11 @@
 SOURCES += \
-    main.cpp
+    main.cpp \
+    mainwindow.cpp
 
 HEADERS += \
-    nico.h
+    nico.h \
+    mainwindow.h
+QT += widgets
+
+FORMS += \
+    mainwindow.ui

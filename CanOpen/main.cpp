@@ -29,7 +29,6 @@ int main(int argc, char *argv[])
     zbwi->setStyleSheet("border: 1px solid red;");
 
     zoneBas *bas = new zoneBas();
-    bas->setStyleSheet("background-color: red;");
 
     Zone first(zbra,zbwi,bas);
 
