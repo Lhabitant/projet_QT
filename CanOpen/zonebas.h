@@ -9,7 +9,7 @@ class zoneBas : public QWidget
 {
     Q_OBJECT
 public:
-    zoneBas(QWidget* parent);
+    zoneBas(QWidget* parent=0);
 private:
     void createOnglets(QTabWidget& onglets);
 
