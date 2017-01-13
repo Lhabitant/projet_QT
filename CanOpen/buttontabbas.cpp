@@ -6,8 +6,9 @@
 buttonTabBas::buttonTabBas(const QString name,QGridLayout* parent)
 {
     this->setText(name);
-    this->setMaximumWidth(100);
-    parent->addWidget(this,0,parent->count(),0,10);
+    this->setMaximumWidth(80);
+    this->setMinimumWidth(10);
+    parent->addWidget(this,0,parent->count(),0,parent->rowCount(),Qt::AlignLeft);
 
 
 }

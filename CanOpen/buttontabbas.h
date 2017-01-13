@@ -2,6 +2,7 @@
 #define BUTTONTABBAS_H
 #include "QBoxLayout"
 #include "QPushButton"
+#include <QBoxLayout>
 
 
 class buttonTabBas : public QPushButton

@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QTabWidget>
 #include <QPushButton>
+#include <QComboBox>
+#include <QFormLayout>
 
 class zoneBas : public QWidget
 {

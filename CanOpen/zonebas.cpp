@@ -23,18 +23,34 @@ void zoneBas::createOnglets(QTabWidget& onglets){
     buttonTabBas *filtre1 = new buttonTabBas("f1",&*filtres);
     buttonTabBas *filtre2 = new buttonTabBas("f2",&*filtres);
     buttonTabBas *filtre3 = new buttonTabBas("f3",&*filtres);
-    /*filtre1->setMaximumWidth(this->width()/8);
-    filtre2->setMaximumWidth(this->width()/8);
-    filtre3->setMaximumWidth(this->width()/8);
-
-    filtres->addWidget(filtre1,0,0,0,10);
-    filtres->addWidget(filtre2,0,1,0,10);
-    filtres->addWidget(filtre3,0,2,0,10);*/
+    buttonTabBas *filtre4 = new buttonTabBas("f4",&*filtres);
+    buttonTabBas *filtre5 = new buttonTabBas("f5",&*filtres);
+    buttonTabBas *filtre6 = new buttonTabBas("f6",&*filtres);
     baba->setLayout(filtres);
+
+    QHBoxLayout *gestionBus = new QHBoxLayout(this);
+    QWidget *gBus = new QWidget();
+    QComboBox *test = new QComboBox();
+    test->addItem("Tous les noeuds");
+    test->addItem("noeud1");
+    gestionBus->addWidget(test);
+    QPushButton *Op = new QPushButton("Opérationnel");
+    gestionBus->addWidget(Op);
+    QPushButton *PreOp = new QPushButton("Pré-opérationnel");
+    gestionBus->addWidget(PreOp);
+    QPushButton *Stop = new QPushButton("Stop");
+    gestionBus->addWidget(Stop);
+    QPushButton *Rest = new QPushButton("Rest");
+    gestionBus->addWidget(Rest);
+    QPushButton *Reset = new QPushButton("Reset");
+    gestionBus->addWidget(Reset);
+    gBus->setLayout(gestionBus);
+
 
 
     QWidget *console = new QWidget(this);
     onglets.addTab(baba,"Filtres");
     onglets.addTab(console,"Console");
+    onglets.addTab(gBus,"NMT");
 }
 
