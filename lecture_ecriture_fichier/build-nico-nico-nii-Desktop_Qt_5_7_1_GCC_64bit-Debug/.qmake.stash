@@ -1,4 +1,5 @@
 QMAKE_DEFAULT_INCDIRS = \
+<<<<<<< HEAD
     /usr/include/c++/4.9.2 \
     /usr/include/c++/4.9.2/x86_64-mageia-linux-gnu \
     /usr/include/c++/4.9.2/backward \
@@ -10,4 +11,19 @@ QMAKE_DEFAULT_LIBDIRS = \
     /usr/lib64 \
     /lib64 \
     /usr/lib \
+=======
+    /usr/include/c++/5 \
+    /usr/include/x86_64-linux-gnu/c++/5 \
+    /usr/include/c++/5/backward \
+    /usr/lib/gcc/x86_64-linux-gnu/5/include \
+    /usr/local/include \
+    /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed \
+    /usr/include/x86_64-linux-gnu \
+    /usr/include
+QMAKE_DEFAULT_LIBDIRS = \
+    /usr/lib/gcc/x86_64-linux-gnu/5 \
+    /usr/lib/x86_64-linux-gnu \
+    /usr/lib \
+    /lib/x86_64-linux-gnu \
+>>>>>>> ea90a16f3a4e3378c627a8a5f187a6e484ea9147
     /lib
