@@ -19,8 +19,8 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc,argv);
-    QString test ="blblb";
-    QString test1 = "gauche";
+    QString test ="zone trames brutes";
+    QString test1 = "zone messages traduits";
     ZoneTrame *TEST = new ZoneTrame;
     zoneBas *bas = new zoneBas();
     QWidget *gauche = TEST->creaZone(test1,test1);

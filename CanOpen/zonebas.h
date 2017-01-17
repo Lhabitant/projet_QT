@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QComboBox>
 #include <QFormLayout>
+#include <QTextEdit>
 
 class zoneBas : public QWidget
 {
@@ -14,8 +15,10 @@ public:
     zoneBas(QWidget* parent=0);
 private:
     void createOnglets(QTabWidget& onglets);
+    void envoyerCommande(QTextEdit entree,QTextEdit sortie);
 
 signals:
+    void lireConsole(QString texte);
 
 public slots:
 };
