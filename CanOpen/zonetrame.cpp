@@ -21,9 +21,9 @@ ZoneTrame::ZoneTrame(QWidget *parent) : QWidget(parent)
 QWidget* ZoneTrame::creaZone(QString name, QString code)
 {
    QTextEdit *zone = texteEdit(code);
-   QWidget *gauche = zone;
-   gauche->setStyleSheet("border: 1px solid black;");
-   return gauche;
+   QWidget *lecteur = zone;
+   lecteur->setStyleSheet("border: 1px solid black;");
+   return lecteur;
 }
 QTextEdit* ZoneTrame::texteEdit(QString text)
 {

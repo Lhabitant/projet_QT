@@ -6,6 +6,8 @@ class main
 {
 public:
     main();
+private:
+
 };
 
 #endif // MAIN_H

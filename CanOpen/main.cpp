@@ -14,13 +14,17 @@
 #include "zonetrame.h"
 #include "zonebas.h"
 #include "main.h"
+#include "trad.h"
 
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc,argv);
-    QString test ="zone trames brutes";
-    QString test1 = "zone messages traduits";
+
+    Trad *traducteur = new Trad;
+    QString test = traducteur->translate();
+    QString test1 = traducteur->translate();
+
     ZoneTrame *TEST = new ZoneTrame;
     zoneBas *bas = new zoneBas();
     QWidget *gauche = TEST->creaZone(test1,test1);
