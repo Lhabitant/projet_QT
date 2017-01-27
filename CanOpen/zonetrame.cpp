@@ -18,17 +18,19 @@ ZoneTrame::ZoneTrame(QWidget *parent) : QWidget(parent)
 
 }
 
-QWidget* ZoneTrame::creaZone(QString name, QString code)
+QWidget* ZoneTrame::lectureTrame(QString code)
 {
-   QTextEdit *zone = texteEdit(code);
-   QWidget *lecteur = zone;
-   lecteur->setStyleSheet("border: 1px solid black;");
-   return lecteur;
+   QTextEdit *zone = lecteur(code);
+   QWidget *fenetreLectureTrame = zone;
+   fenetreLectureTrame->setStyleSheet("border: 1px solid black;");
+   return fenetreLectureTrame;
 }
-QTextEdit* ZoneTrame::texteEdit(QString text)
+QTextEdit* ZoneTrame::lecteur(QString textLu)
 {
     QTextEdit *zone = new QTextEdit;
     zone->setReadOnly(true);
-    zone->setPlainText(text);
+    zone->setPlainText(textLu);
     return zone;
 }
+
+

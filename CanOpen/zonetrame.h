@@ -8,8 +8,8 @@ class ZoneTrame : public QWidget
 {
 public:
 
-    QWidget *creaZone(QString name, QString code);
-    QTextEdit* texteEdit(QString text);
+    QWidget *lectureTrame(QString code);
+    QTextEdit* lecteur(QString text);
 
     Q_OBJECT
 public:

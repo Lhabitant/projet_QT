@@ -15,23 +15,29 @@
 #include "zonebas.h"
 #include "main.h"
 #include "trad.h"
+#include "lecteurcsv.h"
 
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc,argv);
+    LecteurCSV *dico = new LecteurCSV();
 
     Trad *traducteur = new Trad;
-    QString test = traducteur->translate();
-    QString test1 = traducteur->translate();
+    QStringList test = dico->extract();
+    QString txtDroit = dico->getTile(test,1);
+    QString txtGauche = dico->lecture();
 
-    ZoneTrame *TEST = new ZoneTrame;
+
+
+    ZoneTrame *lecteurTrame = new ZoneTrame;
     zoneBas *bas = new zoneBas();
-    QWidget *gauche = TEST->creaZone(test1,test1);
-    QWidget *droite = TEST->creaZone(test,test);
+    QWidget *gauche = lecteurTrame->lectureTrame(txtGauche);
+    QWidget *droite = lecteurTrame->lectureTrame(txtDroit);
+
+
 
     Zone first(gauche,droite,bas);
-
     first.show();
     return app.exec();
 }

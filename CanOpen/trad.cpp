@@ -42,7 +42,7 @@ QString Trad::translate()
 {
     QString texte;
     //Qt prend le chemin absolu, donc mettre dans le dossier debug Qt 5.7 les fichiers que vous voulez afficher
-    QFile *test1 = new QFile(QCoreApplication::applicationDirPath()+"/yolo.txt");
+    QFile *test1 = new QFile(QCoreApplication::applicationDirPath()+"/dicotest.csv");
     if(test1->open(QIODevice::ReadOnly)) // test sur l'ouverture du fichier
     {
         texte = readByBuffer(test1);
@@ -50,4 +50,5 @@ QString Trad::translate()
     else
         texte="Impossible d'ouvrir le fichier !";
     return texte;
+
 }
