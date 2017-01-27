@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     LecteurCSV *dico = new LecteurCSV();
 
     Trad *traducteur = new Trad;
-    QStringList test = dico->extract();
+    QStringList test = dico->extractLine();
     QString txtDroit = dico->getTile(test,1);
     QString txtGauche = dico->lecture();
 

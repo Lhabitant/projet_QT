@@ -11,10 +11,12 @@ class LecteurCSV
 {
 public:
     LecteurCSV();
-    QStringList extract();
+    QStringList extractLine();
     QString lecture();
     QString QStringListToQString(QStringList liste);
     QString getTile(QStringList liste, int x);
+    QString simulFlux(QStringList liste);
+
 };
 
 #endif // LECTEURCSV_H
