@@ -14,7 +14,7 @@ public:
     QStringList extractLine();
     QString lecture();
     QString QStringListToQString(QStringList liste);
-    QString getTile(QStringList liste, int x);
+    QString getTileOnLine(QStringList liste, int x);
     QString simulFlux(QStringList liste);
 
 };

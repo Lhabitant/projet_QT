@@ -14,14 +14,15 @@
 
 ZoneTrame::ZoneTrame(QWidget *parent) : QWidget(parent)
 {
-
+    QTextEdit *zone;
+    QWidget *fenetreLectureTrame;
 
 }
 
 QWidget* ZoneTrame::lectureTrame(QString code)
 {
-   QTextEdit *zone = lecteur(code);
-   QWidget *fenetreLectureTrame = zone;
+   zone = lecteur(code);
+   fenetreLectureTrame = zone;
    fenetreLectureTrame->setStyleSheet("border: 1px solid black;");
    return fenetreLectureTrame;
 }
@@ -33,4 +34,8 @@ QTextEdit* ZoneTrame::lecteur(QString textLu)
     return zone;
 }
 
+void ZoneTrame::ajouterTexte(QString texte)
+{
+    zone->setText(texte);
+}
 

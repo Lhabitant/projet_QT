@@ -48,7 +48,7 @@ QString LecteurCSV::QStringListToQString(QStringList liste)
     return texte;
 }
 
-QString LecteurCSV::getTile(QStringList liste,int x)
+QString LecteurCSV::getTileOnLine(QStringList liste,int x)
 {
     QString tile = liste.at(x);
     return tile;

@@ -7,9 +7,12 @@
 class ZoneTrame : public QWidget
 {
 public:
+    QTextEdit *zone;
+    QWidget *fenetreLectureTrame;
 
     QWidget *lectureTrame(QString code);
     QTextEdit* lecteur(QString text);
+    void ajouterTexte(QString texte);
 
     Q_OBJECT
 public:

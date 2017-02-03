@@ -18,14 +18,14 @@
 #include "lecteurcsv.h"
 
 
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc,argv);
     LecteurCSV *dico = new LecteurCSV();
-
     Trad *traducteur = new Trad;
     QStringList test = dico->extractLine();
-    QString txtDroit = dico->getTile(test,1);
+    QString txtDroit =  dico->lecture();;
     QString txtGauche = dico->lecture();
 
 
@@ -36,8 +36,14 @@ int main(int argc, char *argv[])
     QWidget *droite = lecteurTrame->lectureTrame(txtDroit);
 
 
-
     Zone first(gauche,droite,bas);
     first.show();
+    for(int i; i<100; i++)
+    {
+        txtDroit = txtDroit+ " " + QString::number(i);
+        lecteurTrame->ajouterTexte(txtDroit);
+        // fat le faire attendre ici
+    }
     return app.exec();
+
 }
