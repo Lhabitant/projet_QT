@@ -5,7 +5,8 @@ HEADERS += \
     zonebas.h \
     buttontabbas.h \
     trad.h \
-    lecteurcsv.h
+    lecteurcsv.h \
+    zoneconsole.h
 
 SOURCES += \
     main.cpp \
@@ -14,7 +15,8 @@ SOURCES += \
     zonebas.cpp \
     buttontabbas.cpp \
     trad.cpp \
-    lecteurcsv.cpp
+    lecteurcsv.cpp \
+    zoneconsole.cpp
 QT += widgets
 
 TEMPLATE = app

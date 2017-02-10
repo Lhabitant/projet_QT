@@ -46,28 +46,10 @@ void zoneBas::createOnglets(QTabWidget& onglets){
     gBus->setLayout(gestionBus);
 
 
-
-    QGridLayout *console = new QGridLayout(this);
-    QWidget *zoneConsole = new QWidget();
-    QTextEdit *sortie = new QTextEdit("sortie console");
-    sortie->setReadOnly(true);
-    QTextEdit *entree =new QTextEdit();
-    QPushButton *validConsole = new QPushButton("Envoyer");
-    //QTextEdit *testVide = new QTextEdit();
-    console->addWidget(sortie,0,0,1,1);
-    console->addWidget(entree,3,0,3,1);
-    console->addWidget(validConsole,3,1,1,3);
-    //console->addWidget(testVide,0,4,6,3);
-    connect(validConsole,SIGNAL(clicked()),entree,SLOT(envoyerCommande(entree,sortie)));
-
-    zoneConsole->setLayout(console);
+    zoneConsole *console = new zoneConsole(this);
 
     onglets.addTab(baba,"Filtres");
-    onglets.addTab(zoneConsole,"Console");
+    onglets.addTab(console,"Console");
     onglets.addTab(gBus,"NMT");
-}
-
-void zoneBas::envoyerCommande(QTextEdit entree,QTextEdit sortie){
-    sortie.setPlainText(entree.toPlainText());
 }
 
