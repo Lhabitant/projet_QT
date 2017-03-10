@@ -1,23 +1,4 @@
-#include <QApplication>
-#include <QObject>
-#include <QWidget>
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QPushButton>
-#include <QScrollArea>
-#include <QVBoxLayout>
-#include <QDialog>
-#include <QTextEdit>
-#include <QString>
-
-#include "zone.h"
-#include "zonetrame.h"
-#include "zonebas.h"
 #include "main.h"
-#include "trad.h"
-#include "lecteurcsv.h"
-
-
 
 int main(int argc, char *argv[])
 {
@@ -27,7 +8,10 @@ int main(int argc, char *argv[])
     QStringList test = dico->extractLine();
     QString txtDroit =  dico->lecture();;
     QString txtGauche = dico->lecture();
-
+    LecteurDico *dicTest = new LecteurDico();
+    QVector<QVector<QString>> testLecture;
+    //testLecture = dicTest->dicoToTab();
+    //testLecture[0][0]="test";
 
 
     ZoneTrame *lecteurTrame = new ZoneTrame;

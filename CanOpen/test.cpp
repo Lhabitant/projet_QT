@@ -9,6 +9,7 @@ TEST::TEST()
 
 void TEST::blbl()
 {
+    /*
     QextSerialPort *port;
 
     // création du port en mode asynchrone -> QextSerialPort::Polling
@@ -33,5 +34,5 @@ void TEST::blbl()
     delete port;
 
     return 0;
-
+    */
 }

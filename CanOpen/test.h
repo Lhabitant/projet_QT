@@ -6,6 +6,7 @@ class TEST
 {
 public:
     TEST();
+    void blbl();
 };
 
 #endif // TEST_H
