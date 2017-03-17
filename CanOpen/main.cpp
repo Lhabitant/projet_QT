@@ -9,14 +9,25 @@ int main(int argc, char *argv[])
     QString txtDroit =  dico->lecture();;
     QString txtGauche = dico->lecture();
     LecteurDico *dicTest = new LecteurDico();
-    QVector<QVector<QString>> testLecture;
-    testLecture = dicTest->dicoToTab();
+    QVector<QVector<QString>> dicoV1;
+    dicoV1 = dicTest->dicoToTab();
+
+
+    QFile file(QCoreApplication::applicationDirPath()+"/trameTest.csv");
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << file.errorString();
+    }
+    QString line;
+    line = file.readLine();
+
+
+
+
 
     ZoneTrame *lecteurTrame = new ZoneTrame;
     zoneBas *bas = new zoneBas();
     QWidget *gauche = lecteurTrame->lectureTrame(txtGauche);
     QWidget *droite = lecteurTrame->lectureTrame(txtDroit);
-
 
     Zone first(gauche,droite,bas);
     first.show();

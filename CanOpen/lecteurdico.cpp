@@ -16,15 +16,15 @@ QVector<QVector<QString>> LecteurDico::dicoToTab()
     }
     QString line;
     QStringList wordList;
-    for(int i =0; !file.atEnd(); i++)
+    while(!file.atEnd())
     {
-
-        //extrait qu'une ligne du dico ajoute \n et supprime le ";"
+        wordList.clear();
+        //lit le fichier dicitonnaire ligne par ligne
         line = file.readLine();
         wordList.append(line.split(";"));
         QVector<QString> ligneDico;
-        for(int j=0;j<wordList.size();j++){
-            ligneDico.append(wordList.takeAt(j));
+        for(int i=0;i<wordList.size();i++){
+            ligneDico.append(wordList.at(i));
         }
         dico.append(ligneDico);
 
