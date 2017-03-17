@@ -11,7 +11,8 @@
 #include <QDialog>
 #include <QTextEdit>
 #include <QString>
-
+#include <QCanBus>
+#include<QDebug>
 ZoneTrame::ZoneTrame(QWidget *parent) : QWidget(parent)
 {
     QTextEdit *zone;
@@ -37,5 +38,25 @@ QTextEdit* ZoneTrame::lecteur(QString textLu)
 void ZoneTrame::ajouterTexte(QString texte)
 {
     zone->setText(texte);
+}
+QWidget* ZoneTrame::LectureBusCan()
+{
+    /*
+     * Penser à voir avec un TextStream
+     */
+    QByteArray *plugin = new QByteArray("socketcan");
+    QString *interface = new QString("can0");
+    QCanBusDevice *device = QCanBus::instance()->createDevice(*plugin,*interface);
+    device->connectDevice();
+    QString view;
+
+    while (device->framesAvailable()>0) {
+        const QCanBusFrame frame = device->readFrame();
+        view = view + frame.payload();
+    }
+    /*QCanBusFrame frame = device->readFrame();
+    QString *byt = new QString(frame.payload());*/
+    qDebug()<< view;
+    return lectureTrame(view);
 }
 

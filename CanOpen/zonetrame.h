@@ -13,6 +13,7 @@ public:
     QWidget *lectureTrame(QString code);
     QTextEdit* lecteur(QString text);
     void ajouterTexte(QString texte);
+    QWidget *LectureBusCan();
 
     Q_OBJECT
 public:
