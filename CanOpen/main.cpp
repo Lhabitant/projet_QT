@@ -10,9 +10,7 @@ int main(int argc, char *argv[])
     QString txtGauche = dico->lecture();
     LecteurDico *dicTest = new LecteurDico();
     QVector<QVector<QString>> testLecture;
-    //testLecture = dicTest->dicoToTab();
-    //testLecture[0][0]="test";
-
+    testLecture = dicTest->dicoToTab();
 
     ZoneTrame *lecteurTrame = new ZoneTrame;
     zoneBas *bas = new zoneBas();

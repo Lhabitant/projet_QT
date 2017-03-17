@@ -21,11 +21,12 @@ QVector<QVector<QString>> LecteurDico::dicoToTab()
 
         //extrait qu'une ligne du dico ajoute \n et supprime le ";"
         line = file.readLine();
-        line.append("\n");
         wordList.append(line.split(";"));
+        QVector<QString> ligneDico;
         for(int j=0;j<wordList.size();j++){
-            dico[i][j]=wordList.takeAt(j);
+            ligneDico.append(wordList.takeAt(j));
         }
+        dico.append(ligneDico);
 
     }
     return dico;
