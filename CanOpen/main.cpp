@@ -6,15 +6,21 @@ int main(int argc, char *argv[])
     LecteurCSV *dico = new LecteurCSV();
     Trad *traducteur = new Trad;
     QStringList test = dico->extractLine();
-    QString txtDroit =  dico->lecture();
+    //QString txtDroit =  dico->lecture();
     QString txtGauche = dico->lecture();
 
 
-    QString fileDico = "dicotest2.csv";
+    QString fileDico = "/dicotest2.csv";
     //On ouvre le dictionnaire et le place dans un tableau à double entrée
     LecteurDico *dicTest = new LecteurDico(&fileDico);
     QVector<QVector<QString>> dicoV1 = dicTest->getTab();
 
+
+    //Exemple de trame convertie en chaine de caractères et test de traduction
+    QString *trameText = new QString("205  [2]  01 3F");
+
+
+    QString txtDroit = dicTest->testTraductionTrame(trameText);
 
     QFile file(QCoreApplication::applicationDirPath()+"/trameTest.csv");
     if (!file.open(QIODevice::ReadOnly)) {
@@ -23,7 +29,6 @@ int main(int argc, char *argv[])
     QString line;
     line = file.readLine();
 
-    QString *trameText = new QString("205  [2]  01 3F");
 
     ZoneTrame *lecteurTrame = new ZoneTrame;
     zoneBas *bas = new zoneBas();

@@ -1,5 +1,5 @@
 CANID_min;CANID_max;nom_fichier;traduction
-205;205;dico_porte1;Cellule porte 1
-400;400;dico_vir_out;Virtual output
-481;4FF;dico_vir_in;Virtual input
-18C;18C;dico_pos_lift1;Lift 1 position
+205;205;/dico_porte1.csv;Cellule porte 1
+400;400;/dico_vir_out.csv;Virtual output
+481;4FF;/dico_vir_in.csv;Virtual input
+18C;18C;/dico_pos_lift1.csv;Lift 1 position
