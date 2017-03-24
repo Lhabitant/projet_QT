@@ -8,6 +8,8 @@ int main(int argc, char *argv[])
     QStringList test = dico->extractLine();
     QString txtDroit =  dico->lecture();;
     QString txtGauche = dico->lecture();
+
+    //On ouvre le dictionnaire et le place dans un tableau à double entrée
     LecteurDico *dicTest = new LecteurDico();
     QVector<QVector<QString>> dicoV1;
     dicoV1 = dicTest->dicoToTab();
@@ -20,6 +22,9 @@ int main(int argc, char *argv[])
     QString line;
     line = file.readLine();
 
+    QString *trameText = new QString("205  [2]  01 3F");
+
+    dicTest->tradTrame(trameText);
 
 
 

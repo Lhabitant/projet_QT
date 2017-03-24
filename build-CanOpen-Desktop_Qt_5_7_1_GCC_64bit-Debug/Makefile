@@ -55,7 +55,9 @@ SOURCES       = ../CanOpen/main.cpp \
 		../CanOpen/buttontabbas.cpp \
 		../CanOpen/trad.cpp \
 		../CanOpen/lecteurcsv.cpp \
-		../CanOpen/zoneconsole.cpp moc_zonetrame.cpp \
+		../CanOpen/zoneconsole.cpp \
+		../CanOpen/test.cpp \
+		../CanOpen/lecteurdico.cpp moc_zonetrame.cpp \
 		moc_zonebas.cpp \
 		moc_zoneconsole.cpp
 OBJECTS       = main.o \
@@ -66,6 +68,8 @@ OBJECTS       = main.o \
 		trad.o \
 		lecteurcsv.o \
 		zoneconsole.o \
+		test.o \
+		lecteurdico.o \
 		moc_zonetrame.o \
 		moc_zonebas.o \
 		moc_zoneconsole.o
@@ -226,14 +230,18 @@ DIST          = ../../Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../CanOpen/buttontabbas.h \
 		../CanOpen/trad.h \
 		../CanOpen/lecteurcsv.h \
-		../CanOpen/zoneconsole.h ../CanOpen/main.cpp \
+		../CanOpen/zoneconsole.h \
+		../CanOpen/test.h \
+		../CanOpen/lecteurdico.h ../CanOpen/main.cpp \
 		../CanOpen/zonetrame.cpp \
 		../CanOpen/zone.cpp \
 		../CanOpen/zonebas.cpp \
 		../CanOpen/buttontabbas.cpp \
 		../CanOpen/trad.cpp \
 		../CanOpen/lecteurcsv.cpp \
-		../CanOpen/zoneconsole.cpp
+		../CanOpen/zoneconsole.cpp \
+		../CanOpen/test.cpp \
+		../CanOpen/lecteurdico.cpp
 QMAKE_TARGET  = CanOpen
 DESTDIR       = 
 TARGET        = CanOpen
@@ -568,8 +576,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../CanOpen/main.h ../CanOpen/zonetrame.h ../CanOpen/zone.h ../CanOpen/zonebas.h ../CanOpen/buttontabbas.h ../CanOpen/trad.h ../CanOpen/lecteurcsv.h ../CanOpen/zoneconsole.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../CanOpen/main.cpp ../CanOpen/zonetrame.cpp ../CanOpen/zone.cpp ../CanOpen/zonebas.cpp ../CanOpen/buttontabbas.cpp ../CanOpen/trad.cpp ../CanOpen/lecteurcsv.cpp ../CanOpen/zoneconsole.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../CanOpen/main.h ../CanOpen/zonetrame.h ../CanOpen/zone.h ../CanOpen/zonebas.h ../CanOpen/buttontabbas.h ../CanOpen/trad.h ../CanOpen/lecteurcsv.h ../CanOpen/zoneconsole.h ../CanOpen/test.h ../CanOpen/lecteurdico.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../CanOpen/main.cpp ../CanOpen/zonetrame.cpp ../CanOpen/zone.cpp ../CanOpen/zonebas.cpp ../CanOpen/buttontabbas.cpp ../CanOpen/trad.cpp ../CanOpen/lecteurcsv.cpp ../CanOpen/zoneconsole.cpp ../CanOpen/test.cpp ../CanOpen/lecteurdico.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -2046,6 +2054,133 @@ zoneconsole.o: ../CanOpen/zoneconsole.cpp ../CanOpen/zoneconsole.h \
 		../../Qt/5.7/gcc_64/include/QtWidgets/QLineEdit \
 		../../Qt/5.7/gcc_64/include/QtWidgets/qlineedit.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o zoneconsole.o ../CanOpen/zoneconsole.cpp
+
+test.o: ../CanOpen/test.cpp ../CanOpen/test.h \
+		../../Qt/5.7/gcc_64/include/QtSerialPort/QSerialPort \
+		../../Qt/5.7/gcc_64/include/QtSerialPort/qserialport.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt/5.7/gcc_64/include/QtSerialPort/qserialportglobal.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test.o ../CanOpen/test.cpp
+
+lecteurdico.o: ../CanOpen/lecteurdico.cpp ../CanOpen/lecteurdico.h \
+		../../Qt/5.7/gcc_64/include/QtCore/QFile \
+		../../Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt/5.7/gcc_64/include/QtCore/QStringList \
+		../../Qt/5.7/gcc_64/include/QtCore/QDebug \
+		../../Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qset.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt/5.7/gcc_64/include/QtCore/QCoreApplication \
+		../../Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt/5.7/gcc_64/include/QtCore/QString
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o lecteurdico.o ../CanOpen/lecteurdico.cpp
 
 moc_zonetrame.o: moc_zonetrame.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_zonetrame.o moc_zonetrame.cpp
