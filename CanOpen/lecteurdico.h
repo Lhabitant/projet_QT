@@ -12,9 +12,10 @@ class LecteurDico
 {
 private:
     QVector<QVector<QString>> dico;
+    QVector<QVector<QString>> dicoToTab(QString fileDico);
 public:
     LecteurDico(QString* fileDico);
-    QVector<QVector<QString>> dicoToTab(QString* fileDico);
+    QVector<QVector<QString>> getTab();
 };
 
 #endif // LECTEURDICO_H

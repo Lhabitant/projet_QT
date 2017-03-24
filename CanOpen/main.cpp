@@ -9,10 +9,11 @@ int main(int argc, char *argv[])
     QString txtDroit =  dico->lecture();
     QString txtGauche = dico->lecture();
 
+
+    QString fileDico = "dicotest2.csv";
     //On ouvre le dictionnaire et le place dans un tableau à double entrée
-    LecteurDico *dicTest = new LecteurDico();
-    QVector<QVector<QString>> dicoV1;
-    dicoV1 = dicTest->dicoToTab();
+    LecteurDico *dicTest = new LecteurDico(&fileDico);
+    QVector<QVector<QString>> dicoV1 = dicTest->getTab();
 
 
     QFile file(QCoreApplication::applicationDirPath()+"/trameTest.csv");
@@ -23,8 +24,6 @@ int main(int argc, char *argv[])
     line = file.readLine();
 
     QString *trameText = new QString("205  [2]  01 3F");
-
-    dicTest->tradTrame(trameText);
 
     ZoneTrame *lecteurTrame = new ZoneTrame;
     zoneBas *bas = new zoneBas();

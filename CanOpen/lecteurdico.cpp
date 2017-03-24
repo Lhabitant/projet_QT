@@ -3,11 +3,11 @@
 
 LecteurDico::LecteurDico(QString* fileDIco)
 {
-    this->dico = this->dicoToTab(fileDIco);
+    this->dico = this->dicoToTab(*fileDIco);
 
 }
 
-QVector<QVector<QString>> LecteurDico::dicoToTab(QString* fileDico)
+QVector<QVector<QString>> LecteurDico::dicoToTab(QString fileDico)
 {
 
     QVector<QVector<QString>> dico;
@@ -38,4 +38,9 @@ QVector<QVector<QString>> LecteurDico::dicoToTab(QString* fileDico)
 
     }
     return dico;
+}
+
+QVector<QVector<QString>> LecteurDico::getTab()
+{
+    return this->dico;
 }
