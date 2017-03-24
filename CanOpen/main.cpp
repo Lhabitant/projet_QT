@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
 
     //Exemple de trame convertie en chaine de caractères et test de traduction
-    QString *trameText = new QString("205  [2]  01 3F");
+    QString *trameText = new QString("400  [6]  05 01 01 00 3 01");
 
 
     QString txtDroit = dicTest->testTraductionTrame(trameText);

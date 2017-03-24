@@ -61,11 +61,7 @@ QString LecteurDico::testTraductionTrame(QString* trame)
         if (trameSplit[0]==this->dico[i][0]){
             QVector<QVector<QString>> dicoSpec = this->dicoToTab(dico[i][2]);
             for (int j=1;j<dicoSpec.length();j++){
-                QString dicoData;
-                for (int k=0;k<=2;k++){
-                    dicoData.append(dicoSpec[j][k]);
-                }
-                if (data==dicoData){
+                if (data==dicoSpec[j][2]){
                     trad= dicoSpec[j][3];
                 }
             }
