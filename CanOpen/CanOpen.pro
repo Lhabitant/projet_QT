@@ -21,6 +21,10 @@ SOURCES += \
     zoneconsole.cpp \
     test.cpp \
     lecteurdico.cpp
+<<<<<<< HEAD
 QT += widgets
+=======
+QT += serialbus widgets
+>>>>>>> efa4f2b9a9bde6abdb30dff6c2bee8ce01bee258
 
 TEMPLATE = app
