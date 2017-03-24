@@ -7,7 +7,8 @@ HEADERS += \
     trad.h \
     lecteurcsv.h \
     zoneconsole.h \
-    test.h
+    test.h \
+    lecteurdico.h
 
 SOURCES += \
     main.cpp \
@@ -18,7 +19,8 @@ SOURCES += \
     trad.cpp \
     lecteurcsv.cpp \
     zoneconsole.cpp \
-    test.cpp
+    test.cpp \
+    lecteurdico.cpp
 QT += widgets
 
 TEMPLATE = app
