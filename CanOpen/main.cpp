@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
     //Exemple de trame convertie en chaine de caractères et test de traduction
     QString *trameText = new QString("400  [6]  05 01 01 00 3 01");
-    QString txtDroit = dicTest->testTraductionTrame(trameText);
+    QString txtDroit = dicTest->traductionTrame(trameText);
 
     QFile file(QCoreApplication::applicationDirPath()+"/trameTest.csv");
     if (!file.open(QIODevice::ReadOnly)) {

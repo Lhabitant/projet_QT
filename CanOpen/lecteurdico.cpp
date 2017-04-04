@@ -48,8 +48,20 @@ QVector<QVector<QString>> LecteurDico::getTab()
 }
 
 //Traduction d'une trame CANOpen envoyée en paramètre au format renvoyé par QCanBusFrame::toString()
-QString LecteurDico::testTraductionTrame(QString* trame)
+QString LecteurDico::traductionTrame(QString* trame)
 {
+    //Constantes d'accès aux colonnes du dictionnaire
+    static int dicoCanIDMin = 0;
+    static int dicoCanIDMax = 1;
+    static int dicoFileName = 2;
+
+    //Constantes d'accès aux colonnes des sous-dictionnaires
+    static int dicoSpecRTR = 0;
+    static int dicoSpecLen = 1;
+    static int dicoSpecData = 2;
+    static int dicoTrad = 3;
+
+
     //on met la trame dans un tableau can_id|length|data
     QStringList trameSplit;
     trameSplit=trame->split("  ");
@@ -61,14 +73,14 @@ QString LecteurDico::testTraductionTrame(QString* trame)
     //On parcours le dictionnaire pour touver la can_id correspondant
     for (int i=0;i<this->dico.length();i++)
     {
-        if (trameSplit[0]==this->dico[i][0]){
+        if (trameSplit[0]>=this->dico[i][dicoCanIDMin] and trameSplit[0]<=this->dico[i][dicoCanIDMax]){
             //On ouvre le dico correspondant au can_id de la trame
-            QVector<QVector<QString>> dicoSpec = this->dicoToTab(dico[i][2]);
+            QVector<QVector<QString>> dicoSpec = this->dicoToTab(dico[i][dicoFileName]);
             //On cherche la trame dans ce dico
             for (int j=1;j<dicoSpec.length();j++){
                 //Si on trouve la trame on renvoie la traduction
-                if (data==dicoSpec[j][2]){
-                    return dicoSpec[j][3];
+                if (data==dicoSpec[j][dicoSpecData]){
+                    return dicoSpec[j][dicoTrad];
                 }
             }
         }

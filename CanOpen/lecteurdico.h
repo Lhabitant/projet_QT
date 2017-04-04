@@ -16,7 +16,7 @@ private:
 public:
     LecteurDico(QString* fileDico);
     QVector<QVector<QString>> getTab();
-    QString testTraductionTrame(QString* trame);
+    QString traductionTrame(QString* trame);
 };
 
 #endif // LECTEURDICO_H
