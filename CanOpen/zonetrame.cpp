@@ -11,12 +11,13 @@
 #include <QDialog>
 #include <QTextEdit>
 #include <QString>
-#include <QCanBus>
-#include<QDebug>
+
 ZoneTrame::ZoneTrame(QWidget *parent) : QWidget(parent)
 {
     QTextEdit *zone;
     QWidget *fenetreLectureTrame;
+    QCanBusDevice *device;
+
 
 }
 
@@ -39,24 +40,31 @@ void ZoneTrame::ajouterTexte(QString texte)
 {
     zone->setText(texte);
 }
-QWidget* ZoneTrame::LectureBusCan()
+void* ZoneTrame::LectureBusCan(QWidget *zoneDeTexte)
 {
     /*
      * Penser à voir avec un TextStream
      */
+    if (!QCanBus::instance()->plugins().contains(QStringLiteral("socketcan"))) {
+        qDebug() << "Aie";
+    }
     QByteArray *plugin = new QByteArray("socketcan");
     QString *interface = new QString("can0");
-    QCanBusDevice *device = QCanBus::instance()->createDevice(*plugin,*interface);
-    device->connectDevice();
-    QString view;
-
-    while (device->framesAvailable()>0) {
-        const QCanBusFrame frame = device->readFrame();
-        view = view + frame.payload();
+    device = QCanBus::instance()->createDevice(*plugin,*interface);
+    if(!device->connectDevice()){
+        qDebug() << "Device non connecté";
     }
-    /*QCanBusFrame frame = device->readFrame();
-    QString *byt = new QString(frame.payload());*/
-    qDebug()<< view;
-    return lectureTrame(view);
+
+    //connect(device, &QCanBusDevice::framesReceived,this, &ZoneTrame::checkMessages);
+
+
+    //zoneDeTexte->append(*allFrames);
+}
+
+QCanBusFrame ZoneTrame::lireTrame(){
+
+    return device->readFrame();
+
+
 }
 

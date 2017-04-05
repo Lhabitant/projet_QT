@@ -13,6 +13,7 @@
 #include <QTextEdit>
 #include <QString>
 #include <QVector>
+#include <QCanBusFrame>
 
 #include "zone.h"
 #include "zonetrame.h"

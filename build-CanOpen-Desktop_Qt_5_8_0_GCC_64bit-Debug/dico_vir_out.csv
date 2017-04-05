@@ -1,0 +1,3 @@
+RTR;LEN;DATA;Message
+0;6;05010100301;Virtual Output : Standard Car Call Ack – Floor 1 – Lift 1 – Cabine – Door 1 & 2 – On
+0;6;05030400200;Virtual Output : Standard Car Call Ack – Floor 3 – Lift 3 – Cabine – Door 2 – Off

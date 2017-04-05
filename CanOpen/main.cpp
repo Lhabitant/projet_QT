@@ -1,7 +1,10 @@
 #include "main.h"
 
+int switchCapture =0;
+
 int main(int argc, char *argv[])
 {
+
     QApplication app(argc,argv);
     LecteurCSV *dico = new LecteurCSV();
     Trad *traducteur = new Trad;
@@ -31,16 +34,22 @@ int main(int argc, char *argv[])
     ZoneTrame *lecteurTrame = new ZoneTrame;
     zoneBas *bas = new zoneBas();
     QWidget *gauche = lecteurTrame->lectureTrame(txtGauche);
+
+    //QWidget *droite = lecteurTrame->lectureTrame(txtDroit);
     QWidget *droite = lecteurTrame->lectureTrame(txtDroit);
-    //QWidget *droite = lecteurTrame->LectureBusCan();
-    Zone first(gauche,droite,bas);
+
+    Zone first(gauche,droite,bas,lecteurTrame);
     first.show();
-    for(int i; i<100; i++)
+
+    //qDebug() << "Kappa";
+    /*for(int i; i<100; i++)
     {
         txtDroit = txtDroit+ " " + QString::number(i);
         lecteurTrame->ajouterTexte(txtDroit);
         // fat le faire attendre ici
-    }
+    }*/
+
+
     return app.exec();
 
 }
