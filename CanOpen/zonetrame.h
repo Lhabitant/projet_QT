@@ -22,7 +22,7 @@ public:
     Q_OBJECT
 public:
     explicit ZoneTrame(QWidget *parent = 0);
-    QCanBusFrame lireTrame();
+    QString lireTrame();
 
 signals:
 

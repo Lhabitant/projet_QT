@@ -49,11 +49,12 @@ void* ZoneTrame::LectureBusCan(QWidget *zoneDeTexte)
         qDebug() << "Aie";
     }
     QByteArray *plugin = new QByteArray("socketcan");
-    QString *interface = new QString("can0");
+    QString *interface = new QString("vcan0");
     device = QCanBus::instance()->createDevice(*plugin,*interface);
     if(!device->connectDevice()){
         qDebug() << "Device non connecté";
     }
+    qDebug() << this->lireTrame();
 
     //connect(device, &QCanBusDevice::framesReceived,this, &ZoneTrame::checkMessages);
 
@@ -61,9 +62,9 @@ void* ZoneTrame::LectureBusCan(QWidget *zoneDeTexte)
     //zoneDeTexte->append(*allFrames);
 }
 
-QCanBusFrame ZoneTrame::lireTrame(){
-
-    return device->readFrame();
+QString ZoneTrame::lireTrame(){
+    device->waitForFramesReceived(2000);
+    return device->readFrame().toString();
 
 
 }

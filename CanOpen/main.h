@@ -26,6 +26,7 @@ class main
 {
 public:
     main();
+
 private:
 
 };

@@ -1,5 +1,7 @@
 #include "main.h"
-
+#include <thread>
+#include <iostream>
+#include <mutex>
 int switchCapture =0;
 
 int main(int argc, char *argv[])
@@ -35,8 +37,11 @@ int main(int argc, char *argv[])
     zoneBas *bas = new zoneBas();
     QWidget *gauche = lecteurTrame->lectureTrame(txtGauche);
 
-    //QWidget *droite = lecteurTrame->lectureTrame(txtDroit);
+
     QWidget *droite = lecteurTrame->lectureTrame(txtDroit);
+
+    //QString framereceive=lecteurTrame->lireTrame();
+    //QWidget *droite = lecteurTrame->lectureTrame(framereceive);
 
     Zone first(gauche,droite,bas,lecteurTrame);
     first.show();
